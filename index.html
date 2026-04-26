@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insert heading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'ui-sans-serif', 'system-ui'],
+                    },
+                    colors: {
+                        cream: '#fff8eb',
+                        chalk: '#f7fbff',
+                        pencil: '#ffcb64',
+                        coral: '#ff8f7a',
+                        mint: '#9ce6c8',
+                        sky: '#8cc8ff',
+                        grape: '#b9a7ff',
+                        ink: '#263044',
+                    },
+                    boxShadow: {
+                        soft: '0 18px 60px rgba(38, 48, 68, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-ink antialiased">
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-mint/50 blur-3xl"></div>
+        <div class="absolute top-40 -right-24 h-80 w-80 rounded-full bg-sky/40 blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-coral/30 blur-3xl"></div>
+    </div>
+
+    <header x-data="{ open: false }" class="sticky top-0 z-50 border-b border-white/70 bg-cream/85 backdrop-blur-xl">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+            <a href="#top" class="flex items-center gap-3 font-black tracking-tight text-ink">
+                <span class="grid h-10 w-10 place-items-center rounded-2xl bg-pencil shadow-sm">✏️</span>
+                <span>insert heading</span>
+            </a>
+
+            <nav class="hidden items-center gap-6 text-sm font-bold text-ink/70 md:flex">
+                <a href="#story" class="hover:text-ink">Personal Story</a>
+                <a href="#philosophy" class="hover:text-ink">Philosophical Theoretical</a>
+                <a href="#grade-level" class="hover:text-ink">Grade Level and Content Areas</a>
+                <a href="#families" class="hover:text-ink">Support for the Students and Families</a>
+                <a href="#diversity" class="hover:text-ink">Cultural Identity and Diversity</a>
+                <a href="#reflection" class="hover:text-ink">Reflection and Conclusion</a>
+            </nav>
+
+            <button type="button" class="rounded-2xl bg-white px-4 py-2 text-sm font-black shadow-sm md:hidden" @click="open = !open" :aria-expanded="open.toString()">
+                Menu
+            </button>
+        </div>
+
+        <div x-show="open" x-transition class="border-t border-white/70 bg-cream px-5 py-4 md:hidden">
+            <nav class="mx-auto grid max-w-6xl gap-3 text-sm font-bold text-ink/75">
+                <a href="#story" @click="open = false">Personal Story</a>
+                <a href="#philosophy" @click="open = false">Philosophical Theoretical</a>
+                <a href="#grade-level" @click="open = false">Grade Level and Content Areas</a>
+                <a href="#families" @click="open = false">Support for the Students and Families</a>
+                <a href="#diversity" @click="open = false">Cultural Identity and Diversity</a>
+                <a href="#reflection" @click="open = false">Reflection and Conclusion</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1.1fr_.9fr] md:py-24">
+            <div>
+                <p class="mb-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-black text-coral shadow-sm">insert text</p>
+                <h1 class="max-w-3xl text-5xl font-black leading-[1.02] tracking-tight text-ink md:text-7xl">insert heading</h1>
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-ink/70">insert text</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="#story" class="rounded-2xl bg-ink px-5 py-3 text-sm font-black text-white shadow-soft transition hover:-translate-y-0.5">Personal Story</a>
+                    <a href="#philosophy" class="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink shadow-sm transition hover:-translate-y-0.5">Philosophical Theoretical</a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -left-5 -top-5 h-24 w-24 rounded-[2rem] bg-mint"></div>
+                <div class="absolute -bottom-5 -right-5 h-28 w-28 rounded-full bg-coral/70"></div>
+                <div class="relative overflow-hidden rounded-[2.5rem] bg-white p-6 shadow-soft">
+                    <div class="rounded-[2rem] bg-chalk p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="rounded-3xl bg-pencil/70 p-5">
+                                <p class="text-4xl">📚</p>
+                                <p class="mt-4 font-black">insert text</p>
+                            </div>
+                            <div class="rounded-3xl bg-mint/70 p-5">
+                                <p class="text-4xl">🌱</p>
+                                <p class="mt-4 font-black">insert text</p>
+                            </div>
+                            <div class="rounded-3xl bg-sky/70 p-5">
+                                <p class="text-4xl">🤝</p>
+                                <p class="mt-4 font-black">insert text</p>
+                            </div>
+                            <div class="rounded-3xl bg-grape/60 p-5">
+                                <p class="text-4xl">💡</p>
+                                <p class="mt-4 font-black">insert text</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="mx-auto max-w-6xl px-5 py-10">
+            <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-10">
+                <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                        <p class="text-sm font-black uppercase tracking-[0.2em] text-coral">insert text</p>
+                        <h2 class="mt-2 text-3xl font-black md:text-4xl">Personal Story</h2>
+                    </div>
+                    <span class="rounded-full bg-coral/10 px-4 py-2 text-sm font-black text-coral">insert text</span>
+                </div>
+                <div class="space-y-5 text-lg leading-9 text-ink/75">
+                    <p>Teaching is not a profession I always aspired to do, but after almost an entire year of college I have come to adore my future career.  I entered education because I thought it seemed like the easiest option for me, but it turned into my passion.  It has given me a glimpse into the way I want to shape the future minds of the country.  I want to utilize progressive and social reconstructionism philosophies because it puts focus on the student as an individual capable of amazing things.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="mx-auto max-w-6xl px-5 py-10">
+            <div class="mb-8 max-w-3xl">
+                <p class="text-sm font-black uppercase tracking-[0.2em] text-sky">insert text</p>
+                <h2 class="mt-2 text-3xl font-black md:text-5xl">Philosophical Theoretical</h2>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                    <div class="mb-5 inline-flex rounded-2xl bg-pencil/40 px-4 py-2 text-sm font-black">insert heading</div>
+                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                        <p>The philosophies I want to adhere to throughout my teaching career are progressivism and social reconstructionism.  There are a multitude of reasons for why I want to utilize these, starting with the reasons for progressivism.  According to Melissa Wells and Courtney Clayton, authors of the textbook Foundations of American Education: A Critical Lense, progressivism is, “Focus on the whole child as the experimenter and independent thinker.  Believes active experience leads to questioning and problem solving.  Approaches textbooks as tools instead of authoritarian sources of knowledge” (Wells & Clayton, 2021).  I want to implement this philosophy in my classroom because it places a major emphasis on experiences and students as people capable of independent thought.  I think this will make the classroom a welcoming and inquisitive environment.  The CLF standard C8 requires this type of environment, stating that the classroom should be an inclusive, nurturing, stimulating, and academically challenging learning environment by using critical thinking skills and real-world experience.  Progressivism would be a great way to meet this standard.</p>
+                    </div>
+                </article>
+
+                <article class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                    <div class="mb-5 inline-flex rounded-2xl bg-mint/50 px-4 py-2 text-sm font-black">insert heading</div>
+                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                        <p>The second philosophy I hope to use in the classroom is social reconstructionism.  Melissa Wells and Courtney Clayton declare that social reconstructionism is a “Focus on developing important social questions by critically examining society.  Recognizes influence of social, economic, and political systems.  Believes schools can lead to collaborative change to develop a better society and enhance social justice” (Well & Clayton, 2021).  I want to use this philosophy because I believe change in the world happens in the classroom, and when a teacher encourages students to be critical of society, I think students can be agents of change.  I think a big purpose of education is to create minds that can influence and advocate, which is encouraged through social reconstructionism</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="mt-6 rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <div class="space-y-5 text-base leading-8 text-ink/75">
+                    <p>The usage of these philosophies will help teachers become lifelong learners who develop professionally by improving their teaching over time.  It is extremely important for teachers to consistently develop professionally according to standard D1, which claims that teaching candidates should continually monitor teaching practices by adjusting instructional practices.  The philosophies I wish to implement have an emphasis on teacher development.  In their article about professional development in relation to teaching philosophies, Melek Alemdar and Alper Aytac write, Change is the basis of progressivism and reconstructionism, teachers who prefer adopting these educational philosophies need to improve themselves professionally and keep up with everlasting change (Alanoğlu et al., 2021)” (Alemdar & Aytac, 2022).   This means progressivism and reconstructionism believe teachers should always be developing.  I believe these philosophies will help teachers meet this goal because both philosophies encourage change and experience.  By using these philosophies, I will develop and adjust my teaching by asking my students for feedback on my teaching and then improving upon areas of difficulty.  I will develop professionally by always researching different methods of approach to teaching and by using evidence-based practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="grade-level" class="mx-auto max-w-6xl px-5 py-10">
+            <div class="rounded-[2.5rem] bg-ink p-6 text-white shadow-soft md:p-10">
+                <div class="grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
+                    <div>
+                        <p class="text-sm font-black uppercase tracking-[0.2em] text-pencil">insert text</p>
+                        <h2 class="mt-2 text-3xl font-black md:text-5xl">Grade Level and Content Areas</h2>
+                        <div class="mt-8 grid grid-cols-2 gap-3 text-ink">
+                            <div class="rounded-3xl bg-pencil p-4 font-black">insert text</div>
+                            <div class="rounded-3xl bg-mint p-4 font-black">insert text</div>
+                            <div class="rounded-3xl bg-sky p-4 font-black">insert text</div>
+                            <div class="rounded-3xl bg-grape p-4 font-black">insert text</div>
+                        </div>
+                    </div>
+                    <div class="rounded-[2rem] bg-white p-6 text-ink md:p-8">
+                        <div class="space-y-5 text-base leading-8 text-ink/75">
+                            <p>In my future classroom, I want to make the environment as inviting and supportive as possible by using a mixture of progressivism and social reconstructionism.  When implementing social reconstructionism, I will consistently remind my students to be kind and positive towards each other and to work together for the common good of the classroom.  My responsibility will be to always remind my students that they are valuable and independent individuals who have amazing potential to change the world.  I will also be responsible for teaching my students about moral dilemmas and having them work to solve things together.  I hope the student learning that comes from this is knowledge of content, knowledge of diversity and inclusion, innovation and creativity, and knowing how to treat others with respect and compassion.  This is a requirement of standard A1, which states that teachers should engage all students in active learning.  Ideally, this change in the classroom will contribute to a better society.  In her article on social reconstructionism, Amna Saleem and others argue, “Social, interpersonal connection, and communication with community members all help instill Learning in people. Cultures, language, and other social norms and beliefs all contribute to people learning. Learning is a social activity such as being an active or social individual of society” (Saleem et al, 2021.).   This means social reconstructionism in the classroom is all about creating fair and equal opportunities for students to work together and contribute to change in society.</p>
+                            <p>The other philosophical approach I wish to use in my future teaching will be progressivism.  I will use a progressive approach when making objectives and I will also take a progressive influence for my pedagogy.  I will clearly state the objectives every single day, so students are aware of the expectations they must meet.  I will work with students to achieve these expectations and encourage students to work with each other.  I will also have students set their goals with me, which is one of the core principles in progressive teaching.  This aligns with standard C3, which states that teachers must have appropriate objectives and goals.  I will also try to be progressive in my pedagogy.  I will try and teach my students in a way so that all students can participate and have a say in the managing of the classroom.  For example, I will have students set their own rules with me.  This way, the classroom will be democratic, which is a key component of progressive pedagogy.  I will have a holistic approach to students as well.  I believe progressive pedagogy aligns with my views on the purpose of education.  In an article on the benefits of progressive pedagogy, Timothy P. Tippett and others declare, “These pedagogies encourage community building skills on the level of the classroom, campus, and community at large, which is necessary for cultivating responsive and responsible citizens in an increasingly diverse society” (Tippett et al, 2019).  This claim states progressive approaches to pedagogy can have an influence on students, thus creating a better and more responsible society. This is the pedagogy approach I wish to implement in my classrooms because it contributes to the kind and positive environment I want to create in my classroom.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="families" class="mx-auto max-w-6xl px-5 py-10">
+            <div class="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
+                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                    <p class="text-sm font-black uppercase tracking-[0.2em] text-coral">insert text</p>
+                    <h2 class="mt-2 text-3xl font-black md:text-4xl">Support for the Students and Families</h2>
+                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-3xl bg-coral/15 p-4 font-black">insert text</div>
+                        <div class="rounded-3xl bg-pencil/30 p-4 font-black">insert text</div>
+                        <div class="rounded-3xl bg-mint/30 p-4 font-black">insert text</div>
+                        <div class="rounded-3xl bg-sky/30 p-4 font-black">insert text</div>
+                    </div>
+                </div>
+                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                        <p>I plan to communicate with parents often in my classroom.  This can be achieved by sending home weekly reports to parents about upcoming assignments, events, and student behavior.  A folder can be sent home every day with student homework and graded work in it.  In addition to that, I want to have parent-teacher conferences.  I will not only contact parents if a student does something they should not be doing but also will call home if a student goes above and beyond expectations.  When talking with parents, I would like for them to communicate with me and try to decide goals for the student together.  My goal is for parents to be involved in the classroom and activities.  I will communicate this information, including classroom management, in the weekly reports sent home to parents.  Standard E1 requires this imperative communication.  The standard states that teachers should have a productive and communicative relationship with parents.  I believe that good communication is beneficial to students, so I want to implement that as much as I can. In her article on parent-teacher communication, Paige Tutt writes, “Studies suggest that parental involvement can lead to academic gains for students: higher grades and test scores, improved social skills and time on task, better attendance and participation, and decreased behavioral problems in the classroom” (Tutt, 2021).  This statement claims that there are many benefits to having good communication between a teacher and the parent of a student.  This is the kind of communication I wish to have in my classroom.  I want my classroom to be a place where parents feel like they have a say in their child's education and feel comfortable leaving their child with me on school days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diversity" class="mx-auto max-w-6xl px-5 py-10">
+            <div class="mb-8 max-w-3xl">
+                <p class="text-sm font-black uppercase tracking-[0.2em] text-grape">insert text</p>
+                <h2 class="mt-2 text-3xl font-black md:text-5xl">Cultural Identity and Diversity</h2>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
+                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                        <p>Not all students will be the same in the classroom.  Many students have unique and diverse needs that need to be met in order for students to learn to their best abilities.  Issues can arise when diverse perspectives and approaches are not used.  I want to combat those issues by practicing differentiation, using accommodations and modifications, and using formative assessments.  Differentiation will allow students to complete activities, learn, and keep up with their classmates.  Differentiated instruction will be a great way to meet a student's needs.  In their article on diverse learners, American SPCC claims, “Differentiated instruction is one of the most effective ways to address varied learning needs. This approach involves modifying teaching methods, assignments, and assessments to suit individual students” (American SPCC, 2025). This states that differentiation can be an extremely useful way to help diverse learners.  Students will all learn the same content but will demonstrate their knowledge in an alternate way.  Similarly, accommodations will allow diverse learning students to do this, but expressing their knowledge in a different form, time, or place.  Modifications being used in the classroom will look different than this.  Students with unique needs will be learning in the classroom with their peers, but they may express their understanding in a manner best suited to them.  Finally, formative assessments will let me assess how comfortable students feel on a subject.  This will allow me to work with and identify students who may need help with their understanding or assignments.  All of these supports for diverse learners meet the framework F2, which says that teachers must assess learning in different ways to monitor progress.  By using these methods of support for students who have diverse learning needs, I will make my classroom a place where all students can learn.</p>
+                    </div>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                    <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+                        <p class="text-3xl">🧩</p>
+                        <h3 class="mt-3 text-xl font-black">insert text</h3>
+                    </div>
+                    <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+                        <p class="text-3xl">📝</p>
+                        <h3 class="mt-3 text-xl font-black">insert text</h3>
+                    </div>
+                    <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+                        <p class="text-3xl">🎯</p>
+                        <h3 class="mt-3 text-xl font-black">insert text</h3>
+                    </div>
+                    <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+                        <p class="text-3xl">🔎</p>
+                        <h3 class="mt-3 text-xl font-black">insert text</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection" class="mx-auto max-w-6xl px-5 py-10 pb-20">
+            <div class="rounded-[2.5rem] bg-white p-6 shadow-soft md:p-10">
+                <div class="grid gap-8 lg:grid-cols-[.85fr_1.15fr]">
+                    <div>
+                        <p class="text-sm font-black uppercase tracking-[0.2em] text-coral">insert text</p>
+                        <h2 class="mt-2 text-3xl font-black md:text-5xl">Reflection and Conclusion</h2>
+                        <div class="mt-8 rounded-[2rem] bg-pencil/30 p-6">
+                            <p class="text-lg font-black leading-8">insert text</p>
+                        </div>
+                    </div>
+                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                        <p>In conclusion, I want to make my classroom a place where all students feel accepted, supported, and successful.  I can achieve these goals by using philosophies like progressivism and social reconstruction.  I will use the key components of these philosophies to teach, assess, communicate, and support all of my students.  These philosophies will allow me to construct the classroom needed to best support my students.  A question I have for the future would be how to best harbor a democratic, yet well-managed class?  Teaching shapes the minds of the future, and the way a student contributes to society is a reflection of that.  I will teach in a way that helps all students of every background become the most successful version of themselves they can be.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/70 bg-white/50 px-5 py-8">
+        <div class="mx-auto flex max-w-6xl flex-col justify-between gap-4 text-sm font-bold text-ink/60 sm:flex-row">
+            <p>insert text</p>
+            <a href="#top" class="text-ink hover:text-coral">Back to top</a>
+        </div>
+    </footer>
+</body>
+</html>
