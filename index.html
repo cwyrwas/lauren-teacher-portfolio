@@ -179,14 +179,14 @@
                 <div class="flex gap-2 mb-6">
                     <button 
                         @click="tab = 'one'" 
-                        :class="tab === 'one' ? 'bg-ink text-white' : 'bg-gray-100 text-ink'"
+                        :class="tab === 'one' ? 'bg-ink text-white' : 'bg-pencil/40 text-ink'"
                         class="px-4 py-2 rounded-xl font-bold transition"
                     >
-                        insert text for tab 1
+                        insert text
                     </button>
                     <button 
                         @click="tab = 'two'" 
-                        :class="tab === 'two' ? 'bg-ink text-white' : 'bg-gray-100 text-ink'"
+                        :class="tab === 'two' ? 'bg-ink text-white' : 'bg-mint/40 text-ink'"
                         class="px-4 py-2 rounded-xl font-bold transition"
                     >
                         insert text
@@ -194,13 +194,13 @@
                 </div>
 
                 <div x-show="tab === 'one'" x-transition>
-                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                    <div class="space-y-5 text-base leading-8 text-ink/75 bg-pencil/20 p-5 rounded-2xl">
                         <p>In my future classroom, I want to make the environment as inviting and supportive as possible by using a mixture of progressivism and social reconstructionism.  When implementing social reconstructionism, I will consistently remind my students to be kind and positive towards each other and to work together for the common good of the classroom.  My responsibility will be to always remind my students that they are valuable and independent individuals who have amazing potential to change the world.  I will also be responsible for teaching my students about moral dilemmas and having them work to solve things together.  I hope the student learning that comes from this is knowledge of content, knowledge of diversity and inclusion, innovation and creativity, and knowing how to treat others with respect and compassion.  This is a requirement of standard A1, which states that teachers should engage all students in active learning.  Ideally, this change in the classroom will contribute to a better society.  In her article on social reconstructionism, Amna Saleem and others argue, “Social, interpersonal connection, and communication with community members all help instill Learning in people. Cultures, language, and other social norms and beliefs all contribute to people learning. Learning is a social activity such as being an active or social individual of society” (Saleem et al, 2021.).   This means social reconstructionism in the classroom is all about creating fair and equal opportunities for students to work together and contribute to change in society.</p>
                     </div>
                 </div>
 
                 <div x-show="tab === 'two'" x-transition>
-                    <div class="space-y-5 text-base leading-8 text-ink/75">
+                    <div class="space-y-5 text-base leading-8 text-ink/75 bg-mint/20 p-5 rounded-2xl">
                         <p>The other philosophical approach I wish to use in my future teaching will be progressivism.  I will use a progressive approach when making objectives and I will also take a progressive influence for my pedagogy.  I will clearly state the objectives every single day, so students are aware of the expectations they must meet.  I will work with students to achieve these expectations and encourage students to work with each other.  I will also have students set their goals with me, which is one of the core principles in progressive teaching.  This aligns with standard C3, which states that teachers must have appropriate objectives and goals.  I will also try to be progressive in my pedagogy.  I will try and teach my students in a way so that all students can participate and have a say in the managing of the classroom.  For example, I will have students set their own rules with me.  This way, the classroom will be democratic, which is a key component of progressive pedagogy.  I will have a holistic approach to students as well.  I believe progressive pedagogy aligns with my views on the purpose of education.  In an article on the benefits of progressive pedagogy, Timothy P. Tippett and others declare, “These pedagogies encourage community building skills on the level of the classroom, campus, and community at large, which is necessary for cultivating responsive and responsible citizens in an increasingly diverse society” (Tippett et al, 2019).  This claim states progressive approaches to pedagogy can have an influence on students, thus creating a better and more responsible society. This is the pedagogy approach I wish to implement in my classrooms because it contributes to the kind and positive environment I want to create in my classroom.</p>
                     </div>
                 </div>
