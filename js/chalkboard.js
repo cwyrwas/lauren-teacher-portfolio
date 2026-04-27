@@ -14,6 +14,7 @@ const lc_CHALK_DUST_MAX_RADIUS = 1.6;
 const lc_BOARD_PADDING = 24;
 const lc_CHALK_STROKE_WIDTH = 2.6;
 const lc_CHALK_DOT_RADIUS = 2.8;
+const lc_CHALKBOARD_PROMPT = 'Draw on Ms. Crocco\'s chalkboard!';
 
 window.lc_chalkboardHero = function () {
     return {
@@ -74,9 +75,8 @@ window.lc_chalkboardHero = function () {
             this.ctx.fillStyle = lc_CHALK_TEXT_COLOR;
             this.ctx.fillText('Welcome!', 32, 58);
 
-            this.ctx.font = '800 18px Nunito, sans-serif';
             this.ctx.fillStyle = lc_CHALK_MUTED_TEXT_COLOR;
-            this.ctx.fillText('Draw on Ms. Crocco\'s chalkboard!', 34, 92);
+            this.lc_drawResponsiveChalkText(lc_CHALKBOARD_PROMPT, 34, 92, width - 68);
 
             this.roughCanvas.rectangle(
                 lc_BOARD_PADDING,
@@ -110,6 +110,32 @@ window.lc_chalkboardHero = function () {
             });
 
             this.ctx.restore();
+        },
+
+        lc_drawResponsiveChalkText(text, x, y, maxWidth) {
+            const fontSize = maxWidth < 260 ? 14 : 18;
+            const lineHeight = fontSize + 6;
+            const words = text.split(' ');
+            let line = '';
+
+            this.ctx.font = `800 ${fontSize}px Nunito, sans-serif`;
+
+            words.forEach((word) => {
+                const nextLine = line ? `${line} ${word}` : word;
+
+                if (this.ctx.measureText(nextLine).width > maxWidth && line) {
+                    this.ctx.fillText(line, x, y);
+                    line = word;
+                    y += lineHeight;
+                    return;
+                }
+
+                line = nextLine;
+            });
+
+            if (line) {
+                this.ctx.fillText(line, x, y);
+            }
         },
 
         lc_getPoint(event) {
