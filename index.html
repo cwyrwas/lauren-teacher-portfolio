@@ -7,12 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
     <script src="js/chalkboard.js"></script>
-    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12.1.3/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -88,21 +89,25 @@
             animation: wiggle 4s ease-in-out infinite;
         }
 
-        .classroom-swiper .swiper-pagination-bullet {
+        .classroom-swiper .swiper-pagination-bullet,
+        .kitties-swiper .swiper-pagination-bullet {
             background: #263044;
             opacity: 0.28;
         }
 
-        .classroom-swiper .swiper-pagination-bullet-active {
+        .classroom-swiper .swiper-pagination-bullet-active,
+        .kitties-swiper .swiper-pagination-bullet-active {
             background: #ff8f7a;
             opacity: 1;
         }
 
-        .classroom-swiper .swiper-wrapper {
+        .classroom-swiper .swiper-wrapper,
+        .kitties-swiper .swiper-wrapper {
             align-items: stretch;
         }
 
-        .classroom-swiper .swiper-slide {
+        .classroom-swiper .swiper-slide,
+        .kitties-swiper .swiper-slide {
             height: auto;
         }
 
@@ -114,6 +119,15 @@
         import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@12.1.3/swiper-bundle.min.mjs';
 
         window.addEventListener('DOMContentLoaded', () => {
+            if (window.AOS) {
+                AOS.init({
+                    duration: 700,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 80,
+                });
+            }
+
             new Swiper('.classroom-swiper', {
                 loop: true,
                 centeredSlides: true,
@@ -139,10 +153,36 @@
                     },
                 },
             });
+
+            new Swiper('.kitties-swiper', {
+                loop: true,
+                centeredSlides: true,
+                spaceBetween: 16,
+                autoplay: {
+                    delay: 3400,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.kitties-swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.kitties-swiper-next',
+                    prevEl: '.kitties-swiper-prev',
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 1.15,
+                    },
+                    1024: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
         });
     </script>
 </head>
-<body class="bg-cream font-sans text-ink antialiased">
+<body class="overflow-x-hidden bg-cream font-sans text-ink antialiased">
     <div class="fixed inset-0 -z-10 overflow-hidden">
         <div class="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-mint/50 blur-3xl animate-drift"></div>
         <div class="absolute top-40 -right-24 h-80 w-80 rounded-full bg-sky/40 blur-3xl animate-float"></div>
@@ -182,8 +222,8 @@
     </header>
 
     <main id="top">
-        <section class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 transition duration-700 md:grid-cols-[1.05fr_.95fr] md:py-24" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
-            <div>
+        <section class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 transition duration-700 md:grid-cols-[1.05fr_.95fr] md:py-24">
+            <div data-aos="fade-right">
                 <p class="text-sm font-black tracking-[0.08em] text-coral">Teaching Portfolio</p>
                 <h1 class="mt-3 max-w-3xl text-5xl font-black leading-[1.02] tracking-tight text-ink md:text-7xl">Meet Ms. Crocco!</h1>
                 <p class="mt-6 max-w-2xl text-lg leading-8 text-ink/70">My name is Lauren Crocco, and I am so excited to be a future educator!</p>
@@ -199,7 +239,7 @@
                 </div>
             </div>
 
-            <div class="relative">
+            <div class="relative" data-aos="fade-left">
                 <div class="absolute -left-5 -top-5 h-24 w-24 rounded-[2rem] bg-mint"></div>
                 <div class="absolute -bottom-5 -right-5 h-28 w-28 rounded-full bg-coral/70"></div>
 
@@ -240,17 +280,17 @@
             </div>
         </section>
 
-        <section id="background" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section id="background" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-10">
                 <div class="grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
-                    <div class="relative order-2 lg:order-1">
+                    <div class="relative order-2 lg:order-1" data-aos="fade-right">
                         <div class="absolute -left-4 -top-4 h-20 w-20 rounded-full bg-pencil/70"></div>
                         <div class="absolute -bottom-4 -right-4 h-24 w-24 rounded-[2rem] bg-mint/70"></div>
                         <div class="relative overflow-hidden rounded-[2rem] bg-white p-3 shadow-soft -rotate-1">
                             <img src="img/classroom.jpg" alt="Lauren in a classroom" class="block aspect-[4/5] w-full rounded-[1.5rem] object-cover object-[50%_42%]">
                         </div>
                     </div>
-                    <div class="order-1 lg:order-2">
+                    <div class="order-1 lg:order-2" data-aos="fade-left">
                         <h2 class="mb-6 text-3xl font-black md:text-4xl">Background</h2>
                         <div class="space-y-5 text-lg leading-9 text-ink/75">
                             <p>My name is Lauren Crocco, and I am so excited to be a future educator! Currently, I am a sophomore majoring in early childhood and special education at the University of Pittsburgh at Johnstown. While teaching has not always been my goal, it has quickly become my passion ever since I started my college courses. I love giving students a space to be creative and independent. These ideas stem from my philosophies of progressivism and social reconstructionism.</p>
@@ -260,9 +300,9 @@
             </div>
         </section>
 
-        <section id="fun-facts" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section id="fun-facts" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="grid items-stretch gap-6 lg:grid-cols-[1.05fr_.95fr]">
-                <div class="flex h-full flex-col rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <div class="flex h-full flex-col rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-right">
                     <p class="text-sm font-black tracking-[0.08em] text-coral">About me</p>
                     <h2 class="mt-2 text-3xl font-black md:text-5xl">Fun Facts</h2>
                     <ul class="mt-8 grid flex-1 auto-rows-fr gap-3 text-base font-bold leading-7 text-ink/75 sm:grid-cols-2">
@@ -286,20 +326,29 @@
                             <span class="text-sm font-black tracking-[0.08em] text-ink/60">Favorite movie:</span>
                             <span class="mt-1 text-ink/80">The Outsiders</span>
                         </li>
-                        <li class="flex items-center rounded-3xl bg-lavender/30 px-5 py-4">Favorite something else</li>
-                        <li class="flex items-center rounded-3xl bg-peach/30 px-5 py-4">Favorite another thing</li>
-                        <li class="flex items-center rounded-3xl bg-sunshine/30 px-5 py-4">Favorite something else</li>
+                        <li class="flex flex-col justify-center rounded-3xl bg-lavender/30 px-5 py-4">
+                            <span class="text-sm font-black tracking-[0.08em] text-ink/60">Favorite sport to play:</span>
+                            <span class="mt-1 text-ink/80">Tennis</span>
+                        </li>
+                        <li class="flex flex-col justify-center rounded-3xl bg-peach/30 px-5 py-4">
+                            <span class="text-sm font-black tracking-[0.08em] text-ink/60">Favorite snack:</span>
+                            <span class="mt-1 text-ink/80">Goldfish</span>
+                        </li>
+                        <li class="flex flex-col justify-center rounded-3xl bg-sunshine/30 px-5 py-4">
+                            <span class="text-sm font-black tracking-[0.08em] text-ink/60">Favorite subject to teach:</span>
+                            <span class="mt-1 text-ink/80">English Language Arts</span>
+                        </li>
                         <li class="flex flex-col justify-center rounded-3xl bg-[#101820]/90 px-5 py-4 text-[#FFB612]">
                             <span class="text-sm font-black tracking-[0.08em] text-[#FFB612]/70">Favorite sports team:</span>
                             <span class="mt-1">Pittsburgh Steelers</span>
                         </li>
                         <li class="flex flex-col justify-center rounded-3xl bg-coral/30 px-5 py-4">
-                            <span class="text-sm font-black tracking-[0.08em] text-ink/60">Favorite final thing</span>
-                            <span class="mt-1 text-ink/80">Answer</span>
+                            <span class="text-sm font-black tracking-[0.08em] text-ink/60">Favorite place I've been:</span>
+                            <span class="mt-1 text-ink/80">Japan</span>
                         </li>
                     </ul>
                 </div>
-                <div class="grid h-full gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                <div class="grid h-full gap-4 sm:grid-cols-2 lg:grid-cols-1" data-aos="fade-left">
                     <div class="overflow-hidden rounded-[2rem] bg-white p-3 shadow-soft rotate-1 lg:min-h-0">
                         <img src="img/travel.jpg" alt="Lauren traveling" class="block h-full min-h-[16rem] w-full rounded-[1.5rem] object-cover object-[50%_54%] lg:min-h-0">
                     </div>
@@ -310,14 +359,14 @@
             </div>
         </section>
 
-        <section class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="grid gap-6 lg:grid-cols-2">
-                <article id="progressivism" class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <article id="progressivism" class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-right">
                     <p class="text-sm font-black tracking-[0.08em] text-sky">My first philosophy</p>
                     <h2 class="mt-2 text-3xl font-black md:text-4xl">What is progressivism?</h2>
                     <p class="mt-6 text-base leading-8 text-ink/75">Progressivism is the idea that students should be active in the classroom. My job as a teacher is to view students as individuals with their own experiences and thought processes. The student's jobs are giving input into the things they want to learn, the goals they want to meet, and the rules of the classroom. This connects to progressivism by allowing student to be independent thinkers and experimenters who have a say in their own learning!</p>
                 </article>
-                <article id="social-reconstructionism" class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <article id="social-reconstructionism" class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-left">
                     <p class="text-sm font-black tracking-[0.08em] text-mint">My second philosophy</p>
                     <h2 class="mt-2 text-3xl font-black md:text-4xl">What is Social Reconstructionism?</h2>
                     <p class="mt-6 text-base leading-8 text-ink/75">Social reconstructionism is a belief that encourages students to examine and solve real-world problems in society. My job as a teacher is to teach students about these problems. The students' job is to come up with solutions to these problems. The end goal for this philosophy is to create change both in and out of the classroom.</p>
@@ -325,51 +374,52 @@
             </div>
         </section>
 
-        <section id="learning" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section id="learning" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="rounded-[2.5rem] bg-ink p-6 text-white shadow-soft md:p-10">
                 <div class="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-                    <div>
+                    <div data-aos="fade-right">
                         <p class="text-sm font-black tracking-[0.08em] text-pencil">Professional Development</p>
                         <h2 class="mt-2 text-3xl font-black md:text-5xl">How I will keep learning</h2>
                         <div class="mt-8 overflow-hidden rounded-[2rem] border-4 border-white/20">
                             <img src="img/classroom.jpg" alt="Classroom moment" class="block aspect-[4/3] h-full w-full object-cover object-[50%_44%]">
                         </div>
                     </div>
-                    <div class="rounded-[2rem] bg-white p-6 text-ink md:p-8">
+                    <div class="rounded-[2rem] bg-white p-6 text-ink md:p-8" data-aos="fade-left">
                         <p class="text-base leading-8 text-ink/75">After I graduate college, I will still be learning every day, especially in the classroom. In my classroom, I plan to learn by always asking my students for feedback on what they liked and what they did not like. I will try to use this feedback to change future lessons. I always want to work with students, not against them!</p>
+                        <p class="mt-8 text-base leading-8 text-ink/75"> I also want to practice personal reflection. Every time I finish a lesson or assessment, I want to practice looking back at the lesson I taught. While reflecting, I want to think about what I liked and what I did not like about the lesson. I want to implement what I liked in my future lesson and avoid what I did not like.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
-            <h2 class="mb-8 text-3xl font-black md:text-5xl">From the Classroom</h2>
-            <div class="overflow-hidden rounded-[2.5rem] bg-white p-3 shadow-soft md:p-4">
+        <section class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
+            <h2 class="mb-8 text-3xl font-black md:text-5xl" data-aos="fade-right">From the Classroom</h2>
+            <div class="overflow-hidden rounded-[2.5rem] bg-white p-3 shadow-soft md:p-4" data-aos="fade-up">
                 <div class="swiper classroom-swiper h-[18rem] sm:h-[24rem] lg:h-[30rem]">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="img/class/class-1.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-1.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-2.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-2.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-3.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-3.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-4.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-4.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-5.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-5.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-6.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-6.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-7.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-7.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/class/class-8.jpg" alt="Classroom moment" class="block h-full w-full object-cover">
+                            <img src="img/class/class-8.jpg" alt="Classroom moment" class="block h-full w-full object-contain">
                         </div>
                     </div>
                     <button type="button" class="classroom-swiper-prev absolute left-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-2xl font-black text-ink shadow-soft transition hover:bg-pencil" aria-label="Previous slide">‹</button>
@@ -379,9 +429,49 @@
             </div>
         </section>
 
-        <section id="classroom" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
+            <h2 class="mb-8 text-3xl font-black md:text-5xl" data-aos="fade-right">Kitties</h2>
+            <div class="overflow-hidden rounded-[2.5rem] bg-white p-3 shadow-soft md:p-4" data-aos="fade-up">
+                <div class="swiper kitties-swiper h-[18rem] sm:h-[24rem] lg:h-[30rem]">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat1.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat2.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat3.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat4.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat5.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat6.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat7.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat8.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/cats/cat9.jpg" alt="Cat" class="block h-full w-full object-contain rounded-xl">
+                        </div>
+                    </div>
+                    <button type="button" class="kitties-swiper-prev absolute left-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-2xl font-black text-ink shadow-soft transition hover:bg-pencil" aria-label="Previous slide">‹</button>
+                    <button type="button" class="kitties-swiper-next absolute right-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-2xl font-black text-ink shadow-soft transition hover:bg-pencil" aria-label="Next slide">›</button>
+                    <div class="kitties-swiper-pagination swiper-pagination !bottom-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="classroom" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
-                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-right">
                     <p class="text-sm font-black tracking-[0.08em] text-coral">How I will make it inviting</p>
                     <h2 class="mt-2 text-3xl font-black md:text-5xl">My classroom environment</h2>
                     <p class="mt-6 text-base leading-8 text-ink/75">My number one goal for my classroom is to make it welcoming for all students from all backgrounds. This is how I will do that:</p>
@@ -394,7 +484,7 @@
                         <li class="rounded-3xl bg-coral/15 p-4">Teaching students that change is good</li>
                     </ul>
                 </div>
-                <div class="grid gap-4">
+                <div class="grid gap-4" data-aos="fade-left">
                     <div class="overflow-hidden rounded-[2rem] bg-white p-3 shadow-soft">
                         <img src="img/nara-park.jpg" alt="Lauren at Nara Park" class="block aspect-[4/3] w-full rounded-[1.5rem] object-cover object-[50%_42%]">
                     </div>
@@ -406,35 +496,36 @@
             </div>
         </section>
 
-        <section id="classroom-work" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section id="classroom-work" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-10">
                 <div class="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
-                    <div>
+                    <div data-aos="fade-right">
                         <p class="text-sm font-black tracking-[0.08em] text-grape">Setting goals</p>
                         <h2 class="mt-2 text-3xl font-black md:text-5xl">How my classroom will work</h2>
                     </div>
-                    <p class="text-base leading-8 text-ink/75">Students will be tasked with creating the classroom they want to learn in. Students will be allowed to set their own rules and goals. Additionally, students will be given some opportunities to work with the teacher to create objectives for what they want to learn. This will be done with careful monitoring and guidance from the teacher. By allowing students to create their own environment, they will be more likely to hold each other accountable to follow the rules!</p>
+                    <p class="text-base leading-8 text-ink/75" data-aos="fade-left">Students will be tasked with creating the classroom they want to learn in. Students will be allowed to set their own rules and goals. Additionally, students will be given some opportunities to work with the teacher to create objectives for what they want to learn. This will be done with careful monitoring and guidance from the teacher. By allowing students to create their own environment, they will be more likely to hold each other accountable to follow the rules!</p>
                 </div>
             </div>
         </section>
 
-        <section id="communication" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section id="communication" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
             <div class="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
-                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-right">
                     <p class="text-sm font-black tracking-[0.08em] text-coral">Communication in and out of the classroom</p>
                     <h2 class="mt-2 text-3xl font-black md:text-4xl">Parent and Guardian Communication</h2>
                     <div class="mt-8 overflow-hidden rounded-[2rem] bg-chalk p-3">
                         <img src="img/header.jpg" alt="Lauren Crocco portrait" class="block aspect-[4/3] w-full rounded-[1.5rem] object-cover object-[50%_42%]">
                     </div>
                 </div>
-                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
+                <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-left">
                     <p class="text-base leading-8 text-ink/75">I will implement communication folders! This is a simple, yet effective way for teachers and guardians of students to communicate. At the end of every week, I will send home a folder updating guardians on what students did that week, upcoming events, and student behavior for the week. Parents and Guardians are encouraged to write back with any questions, comments or concerns!</p>
+                    <p class="mt-8 text-base leading-8 text-ink/75"> Additionally, I would love to implement regular conferences between parents and guardians. The frequency of these conferences will be dependent on students and their guardians, and these conferences can be virtual or in-person. I would also love to give calls home when a student does something exceptional. This could be the student getting a good grade on something they struggled with or doing something kind for a friend!</p>
                 </div>
             </div>
         </section>
 
-        <section id="diversity" class="mx-auto max-w-6xl px-5 py-10 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
-            <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-10">
+        <section id="diversity" class="mx-auto max-w-6xl px-5 py-10 transition duration-700">
+            <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-10" data-aos="fade-up">
                 <p class="text-sm font-black tracking-[0.08em] text-grape">How I will implement diversity into the classroom</p>
                 <h2 class="mt-2 text-3xl font-black md:text-5xl">Diversity in the classroom</h2>
                 <p class="mt-6 text-base leading-8 text-ink/75">I want my classroom to be a safe space for every single student no matter their background, cultural identity, or socioeconomic status. I will do this by:</p>
@@ -446,26 +537,67 @@
                     <li class="rounded-3xl bg-grape/30 p-4">Having food in my classroom for student who may need it</li>
                     <li class="rounded-3xl bg-coral/15 p-4">Encouraging all students to be kind to themselves and their classmates</li>
                     <li class="rounded-3xl bg-pencil/30 p-4">Celebrating differences</li>
+                    <li class="rounded-3xl bg-rose-500/30 p-4"> Working with parents and guardians when a student is struggling</li>
+                    <li class="rounded-3xl bg-mint/30 p-4">Teaching lessons about other cultures </li>
                 </ul>
             </div>
         </section>
 
-        <section id="goals" class="mx-auto max-w-6xl px-5 py-10 pb-20 transition duration-700" x-data="{ shown: false }" x-intersect.once="shown = true" :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <section id="goals" class="mx-auto max-w-6xl px-5 py-10 pb-20 transition duration-700">
             <div class="rounded-[2.5rem] bg-white p-6 shadow-soft md:p-10">
                 <div class="grid gap-8 lg:grid-cols-[.85fr_1.15fr]">
-                    <div>
+                    <div data-aos="fade-right">
                         <p class="text-sm font-black tracking-[0.08em] text-coral">Conclusion</p>
                         <h2 class="mt-2 text-3xl font-black md:text-5xl">My ultimate goals for the classroom</h2>
                         <div class="mt-8 overflow-hidden rounded-[2rem] bg-chalk p-3">
                             <img src="img/travel.jpg" alt="Lauren traveling" class="block aspect-[4/3] w-full rounded-[1.5rem] object-cover object-[50%_54%]">
                         </div>
                     </div>
-                    <div class="space-y-5 text-base leading-8 text-ink/75">
-                        <p>Ultimately, I want my classroom to be a space where all students can create, thrive, experiment, question, and be independent. I hope to achieve this by using my teaching philosophies. Additionally, I want to invite parent and guardian collaboration and communication into the classroom, so that all parties involved can create meaningful experiences for students in the classroom!</p>
+                    <div class="text-base leading-8 text-ink/75" data-aos="fade-left">
+                        <p class="mt-8">Ultimately, I want my classroom to be a space where all students can create, thrive, experiment, question, and be independent. I hope to achieve this by using my teaching philosophies. Additionally, I want to invite parent and guardian collaboration and communication into the classroom, so that all parties involved can create meaningful experiences for students in the classroom!</p>
+                        <p class="mt-8">I also want my classroom to be full of creativity. I would love to include students' artwork as decorations for all around the classroom. I also want to encourage creativity in many of the lessons and assignments by giving students the option to do something creative for homework. By doing this, students will be able to grow their creative thinking skills and independence. These ideas all stem from progressivism and social reconstructionism.  </p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section id="lessonPlan" class="mx-auto max-w-6xl px-5 pb-20">
+            <div class="rounded-[2.5rem] bg-white p-6 shadow-soft md:p-10" data-aos="fade-up">
+                <p class="text-sm font-black tracking-[0.08em] text-coral">Lesson Plan</p>
+                <p class="mt-3 text-xl text-ink">Click here to see a sample of my favorite lesson plan I have done. This lesson plan was made with my teaching philosophies in mind!</p>
+                <p class="mt-6">
+                    <a
+                    class="inline-flex items-center gap-3 rounded-2xl bg-ink px-5 py-3 text-sm font-black text-white shadow-soft transition duration-200 ease-in-out hover:-translate-y-0.5 hover:bg-coral"
+                    href="https://docs.google.com/document/d/1r9BzjXCYA-AvZ2PlfISiHvIyBc8eP6thuYDIHPnMMTo/edit?tab=t.0">
+                        Lesson Plan
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <section id="acknowledgements" class="mx-auto max-w-6xl px-5 pb-20 transition duration-700">
+            <div class="rounded-[2rem] bg-white p-6 shadow-soft md:p-8" data-aos="fade-up">
+                <p class="text-sm font-black tracking-[0.08em] text-coral">Acknowledgements</p>
+                <div class="flex md:flex-row flex-col items-center justify-center">
+                    <div>
+                        <p class="mt-3 text-2xl font-black leading-9 text-ink">Developed by Christian Wyrwas
+                            <br>Software Engineer at Strategies Publishing Group LLC
+                            <br>cwyrwas@strategies.com - <a href="https://strategies.com" class="text-pink-500 hover:underline font-bold">strategies.com</a>
+                        </p>
+                    </div>
+
+                    <div>
+                        <a href="http://strategies.com/about-us"><!--?xml version="1.0" encoding="utf-8"?--> <svg class="w-64 h-64 text-pink-500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 576 576" style="enable-background:new 0 0 576 576;" xml:space="preserve"> <g> <circle style="fill:#ffffff" cx="288" cy="288" r="210.6"></circle> <g> <path style="fill:#ea4192" d="M298.4,142.3c-19.2,2.1-37.7,10.8-51.9,26c-0.2,0.3-0.5,0.5-0.7,0.8c-26.6,28.9-29.1,71.4-8.6,102.6 l20.6-21.9c-9.8-19.8-7-44.4,8.8-61.6c0.2-0.2,0.3-0.4,0.5-0.5c16.1-17,40.5-21.6,61-13.1l12.5-13.1l8.2-8.8 C333.3,143.8,315.6,140.4,298.4,142.3z"></path> <path d="M314.1,231.9c9,19.5,6.7,43.5-8.7,60.3c-0.1,0.1-0.2,0.2-0.3,0.3c-15.8,17-40,21.8-60.5,13.7l-20.6,22 c15.3,8.5,32.7,11.7,49.6,9.8c19.2-2.2,37.8-11,52.1-26.3c0.2-0.2,0.4-0.4,0.5-0.6c26.4-28.9,29.2-70.8,8.8-101.9L314.1,231.9z"></path> </g> <circle style="fill:#cbdb2c" cx="363.9" cy="325.2" r="12.7"></circle> <path d="M156.3,397.7v-0.4l2.9-2.4h0.4c1.7,2.8,5.2,4.6,8.8,4.6c4.2,0,7.2-2,7.2-5c0-4-3.9-5.4-8.2-7.2c-4.5-1.9-9-3.9-9-9.1 c0-5.4,4.3-9,10.9-9c4.3,0,8.6,2.2,10.7,5.5v0.4l-2.9,2.4h-0.4c-1.6-2.5-4.7-4.1-7.6-4.1c-3.6,0-6,1.8-6,4.4c0,2.8,2.6,4.1,6.2,5.6 c5.6,2.4,11,4.3,11,11c0,5.5-4.7,9.2-11.5,9.2C163.5,403.6,159.1,401.3,156.3,397.7z"></path> <path d="M194.2,360l0,10h10.3v3.9l-10.3,0v19.3c0,4.3,2,6.2,5.3,6.2c1.2,0,3.1-0.5,4.1-1.6l0.4,0.1l1.6,3l-0.1,0.4 c-1.6,1.3-3.7,2.2-6.4,2.2c-5.7,0-9.5-3.5-9.5-10.3V374H184V370h5.5v-10L194.2,360z"></path> <path d="M228.9,370.6l-1.5,3.6l-0.4,0.2c-1-0.7-2.1-0.8-3.4-0.8c-4.8,0-7.8,4.5-7.8,10.6v18.7h-4.6l0-32.8h4.4v4.4 c1.8-3.1,4.7-5.2,8.7-5.2c1.6,0,3.1,0.3,4.4,0.9L228.9,370.6z"></path> <path d="M258.7,382.6v20.2h-4.5v-4.4c-2.8,3.2-7,5.2-11.4,5.2c-7.6,0-12.7-4.3-12.7-10.7c0-6.6,5.6-11,13.9-11 c4.1,0,7.4,1.1,10.2,2.5v-2.8c0-4.9-3.7-8.2-9.3-8.2c-3.6,0-7.6,1.4-10.3,3.7h-0.4l-2-3v-0.4c3.2-2.8,8.2-4.5,12.7-4.5 C253.9,369.2,258.7,374.2,258.7,382.6z M254.3,390.8v-2c-2.2-1.1-6-2.7-10.1-2.7c-5.6,0-9.3,2.8-9.3,7c0,3.8,3.3,6.4,8.4,6.4 C248.7,399.4,254.3,396.2,254.3,390.8z"></path> <path d="M272.3,360v10h10.3v3.9h-10.3l0,19.3c0,4.3,2,6.2,5.3,6.2c1.2,0,3.1-0.5,4.1-1.6l0.4,0.1l1.6,3l-0.1,0.4 c-1.6,1.3-3.7,2.2-6.4,2.2c-5.7,0-9.5-3.5-9.5-10.3l0-19.4h-5.5V370h5.5v-10L272.3,360z"></path> <path d="M290.9,387.8c0.6,7.5,6.3,11.6,12.4,11.6c3.8,0,8.7-1.6,11.4-5h0.4l2.8,2.4v0.4c-3.3,4.4-9.4,6.4-14.4,6.4 c-8.9,0-17.3-6.2-17.3-17.1c0-9.9,7.1-17.3,16.5-17.3c4.6,0,8.5,1.6,11.3,4.4c3.1,3,4.9,7.3,4.9,12.1c0,0.9-0.1,1.6-0.1,2H290.9z M291.1,383.6h23c-0.4-2.8-1.5-5.1-3.2-6.8c-2-2.2-4.9-3.3-8.3-3.3C296.4,373.4,291.9,377.4,291.1,383.6z"></path> <path d="M355.7,370l0,28.2c0,10.6-7.7,15.2-16,15.2c-6.4,0-12.1-2.9-15.3-7.3v-0.4l2.9-2.4h0.4c2.6,3.5,6.5,6,12,6 c6.6,0,11.4-3.5,11.4-10.9v-3c-2.7,3-6.8,4.9-11.6,4.9c-9.4,0-16.1-6.8-16.1-15.5c0-8.7,6.8-15.5,16.2-15.5c5,0,9.1,1.9,11.7,5.1 V370H355.7z M351.4,384.8c0-6.6-4.8-11.4-11.7-11.4c-6.9,0-11.5,4.7-11.5,11.3c0,6.6,4.6,11.3,11.6,11.3 C346.8,396,351.4,391.3,351.4,384.8z"></path> <path d="M361.6,370h4.6v32.8h-4.6L361.6,370z"></path> <path d="M375.2,387.8c0.6,7.5,6.3,11.6,12.4,11.6c3.8,0,8.7-1.6,11.4-5h0.4l2.8,2.4v0.4c-3.3,4.4-9.4,6.4-14.4,6.4 c-8.9,0-17.3-6.2-17.3-17.1c0-9.9,7.1-17.3,16.5-17.3c4.6,0,8.5,1.6,11.3,4.4c3.1,3,4.9,7.3,4.9,12.1c0,0.9-0.1,1.6-0.1,2H375.2z M375.4,383.6h23c-0.4-2.8-1.5-5.1-3.1-6.8c-2-2.2-4.9-3.3-8.3-3.3C380.7,373.4,376.2,377.4,375.4,383.6z"></path> <path d="M406.3,397.7v-0.4l2.9-2.4h0.4c1.7,2.8,5.2,4.6,8.8,4.6c4.2,0,7.2-2,7.2-5c0-4-3.9-5.4-8.2-7.2c-4.5-1.9-9-3.9-9-9.1 c0-5.4,4.3-9,10.9-9c4.3,0,8.6,2.2,10.7,5.5v0.4l-2.9,2.4h-0.4c-1.6-2.5-4.7-4.1-7.6-4.1c-3.6,0-6,1.8-6,4.4c0,2.8,2.6,4.1,6.2,5.6 c5.6,2.4,11,4.3,11,11c0,5.5-4.7,9.2-11.5,9.2C413.6,403.6,409.2,401.3,406.3,397.7z"></path> </g> </svg></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
     </main>
 
     <a href="#top" class="fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-ink text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-coral">
